@@ -16,6 +16,7 @@ public class Formulario extends javax.swing.JFrame {
     /**
      * Creates new form Formulario
      */
+    String txt1;
     SeguroDeVida calcularSeguro = new SeguroDeVida();
     boolean siFumador=false,siAlcoholico=false,siDrogadicto=false,siCardiaco=false;
     long valorBase=0;
@@ -38,6 +39,8 @@ public class Formulario extends javax.swing.JFrame {
         rgAlcoholico = new javax.swing.ButtonGroup();
         rgSustancias = new javax.swing.ButtonGroup();
         rgCardiacos = new javax.swing.ButtonGroup();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         txtvalorbase = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -57,6 +60,19 @@ public class Formulario extends javax.swing.JFrame {
         btncalcular = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         lbresultado = new javax.swing.JLabel();
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        jLabel8.setText("jLabel8");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -136,7 +152,6 @@ public class Formulario extends javax.swing.JFrame {
                                 .addComponent(jLabel5)
                                 .addComponent(jLabel1))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(rbfumadorno)
                                     .addComponent(rbfumadorsi))
@@ -249,7 +264,11 @@ public class Formulario extends javax.swing.JFrame {
             calcularSeguro();
         }catch (Exception e){
             JOptionPane.showMessageDialog(null,"Faltan campos por diligenciar ", "Error ", JOptionPane.ERROR_MESSAGE);
-        }     
+        }
+        Formulario2 abrir = new Formulario2(Long.toString(calcularSeguro.Calcular(valorBase,siFumador,siAlcoholico,siDrogadicto,siCardiaco)));
+        abrir.setVisible(true);
+
+
     }//GEN-LAST:event_btncalcularActionPerformed
     private void calcularSeguro(){
         valorBase = Long.parseLong(txtvalorbase.getText());
@@ -274,6 +293,8 @@ public class Formulario extends javax.swing.JFrame {
             siCardiaco=false;
         }
         lbresultado.setText(Long.toString(calcularSeguro.Calcular(valorBase,siFumador,siAlcoholico,siDrogadicto,siCardiaco)));
+        
+
     }
     /**
      * @param args the command line arguments
@@ -320,6 +341,8 @@ public class Formulario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbresultado;
     private javax.swing.JRadioButton rbalcoholicono;
     private javax.swing.JRadioButton rbalcoholicosi;
